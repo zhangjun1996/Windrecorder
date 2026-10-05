@@ -675,6 +675,7 @@ def extract_datetime_from_db_backup_filename(db_file_name, user_name=config.user
 
 # 判断是否已锁屏
 def is_screen_locked():
+    user32 = ctypes.windll.user32
     h_desktop = user32.OpenDesktopW("default", 0, False, 0x0100)
     if h_desktop:
         is_locked = not user32.SwitchDesktop(h_desktop)
